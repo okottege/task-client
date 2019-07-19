@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "task-123-abc",
+      "title": "Get bread",
+      "description": "Go and get the best bread",
+      "dueDate": "2019-01-01"
+    },
+    {
+      "id": "task-456-abc",
+      "title": "Get the WOF",
+      "description": "have to get the vehicle Warrant of fitness",
+      "dueDate": "2019-07-20"
+    },
+    {
+      "id": "task-789-abc",
+      "title": "Ring client ABC Holidays Ltd",
+      "description": "We need to ring ABC Holidays to answer few of their queries.",
+      "dueDate": "2019-07-25"
+    }
+  ]
+}

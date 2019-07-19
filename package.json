@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
     "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:mock-server": "json-server -p 3009 --watch ./tools/db.json",
+    "start": "concurrently --kill-others \"npm run start:mock-server\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -32,10 +36,12 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
+    "concurrently": "^4.1.1",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.2"
+    "eslint-plugin-react": "^7.14.2",
+    "json-server": "^0.15.0"
   },
   "description": "A client application for managing tasks.",
   "author": "Oshan Kottege",
