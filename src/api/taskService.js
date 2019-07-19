@@ -1,0 +1,9 @@
+import axios from 'axios';
+import {baseUrl} from './apiUtils';
+
+const apiBaseUrl = `${baseUrl}/tasks`;
+
+export function getTasks() {
+  axios.get(apiBaseUrl)
+    .then(response => response.data);
+}
