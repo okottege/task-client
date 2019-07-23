@@ -3,7 +3,7 @@ import {baseUrl} from './apiUtils';
 
 const apiBaseUrl = `${baseUrl}/tasks`;
 
-export function getTasks() {
+export default function getTasks() {
   axios.get(apiBaseUrl)
     .then(response => response.data);
 }

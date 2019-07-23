@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import * as taskApi from '../../api/taskService';
+import getTasks from '../../api/taskService';
 
 export function createTask(task) {
   return {type: types.TASK_CREATE, task};
@@ -11,7 +11,7 @@ export function loadTasksSuccess(tasks) {
 
 export function loadTasks() {
   return dispatch => {
-    taskApi.getTasks()
+    getTasks()
       .then(tasks => dispatch(loadTasksSuccess(tasks)))
       .catch(err => console.log('Error fetching tasks: ', err));
   };
