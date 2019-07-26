@@ -15,7 +15,7 @@ export function loadTasksFailure(error) {
 
 export function loadTasks() {
   return dispatch => {
-    getTasks()
+    return getTasks()
       .then(tasks => dispatch(loadTasksSuccess(tasks)))
       .catch(err => dispatch(loadTasksFailure(err)));
   };

@@ -6,18 +6,36 @@ import * as taskActions from "../../redux/actions/taskActions";
 import TaskList from "./TaskList";
 
 class TasksPage extends Component {
-  state = {
-    tasks: []
-  };
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.loadTasks();
+  }
 
   render() {
     return (
       <>
         <h1>Tasks</h1>
-        <TaskList tasks={this.state.tasks} />
+        <TaskList tasks={this.props.tasks} />
       </>
     );
   }
 }
 
-export default TasksPage;
+TasksPage.propTypes = {
+  tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  actions: PropTypes.shape({
+    loadTasks: PropTypes.func.isRequired
+  }).isRequired
+};
+
+const mapStateToProps = state => ({
+  tasks: state.tasks
+});
+const mapDispatchToProps = dispatch => ({
+  actions: { loadTasks: bindActionCreators(taskActions.loadTasks, dispatch) }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TasksPage);

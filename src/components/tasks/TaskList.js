@@ -8,10 +8,12 @@ const TaskList = ({ tasks }) => (
       <Card.Body>
         <Table striped bordered hover size="sm">
           <thead>
-            <tr>#</tr>
-            <tr>Title</tr>
-            <tr>Description</tr>
-            <tr>Due</tr>
+            <tr>
+              <td>#</td>
+              <td>Title</td>
+              <td>Description</td>
+              <td>Due</td>
+            </tr>
           </thead>
           <tbody>
             {tasks.map(task => (

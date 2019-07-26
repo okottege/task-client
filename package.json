@@ -14,7 +14,6 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
-    "redux-saga": "^1.0.5",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -42,7 +41,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
-    "concurrently": "^4.1.1",
+    "babel-preset-react-app": "^9.0.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",

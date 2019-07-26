@@ -5,5 +5,7 @@ export default function getEmployees() {
   axios
     .get(employeeUrl)
     .then(response => response.data)
-    .catch(err => throw new Error(`There was an error retrieving employees: ${err.message}`));
+    .catch(err => {
+      throw new Error(`There was an error retrieving employees: ${err.message}`);
+    });
 }
