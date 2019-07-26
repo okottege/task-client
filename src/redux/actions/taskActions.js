@@ -2,7 +2,7 @@ import * as types from "./actionTypes";
 import getTasks from "../../api/taskService";
 
 export function createTask(task) {
-  return { type: types.TASK_CREATE, task };
+  return { type: types.TASK_CREATE_SUCCESSFUL, task };
 }
 
 export function loadTasksSuccess(tasks) {
