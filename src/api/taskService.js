@@ -1,14 +1,9 @@
 import axios from "axios";
-import { baseUrl } from "./apiUtils";
+import { taskUrl } from "./apiUtils";
 
-const apiBaseUrl = `${baseUrl}/tasks`;
-
-export function getTasks() {
-  axios.get(apiBaseUrl).then(response => response.data);
-}
-export function getAllEmployees() {
+export default function getTasks() {
   axios
-    .get(`${baseUrl}/employees`)
+    .get(taskUrl)
     .then(response => response.data)
-    .catch(throw new Error("There was an error retrieving employees"));
+    .catch(err => throw new Error(`There was a problem getting tasks, error is: ${err.message})`));
 }

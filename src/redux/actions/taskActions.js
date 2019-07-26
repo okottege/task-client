@@ -6,17 +6,17 @@ export function createTask(task) {
 }
 
 export function loadTasksSuccess(tasks) {
-  return { type: types.TASKS_LOAD_SUCCESSUL, tasks };
+  return { type: types.TASKS_LOAD_SUCCESSFUL, tasks };
+}
+
+export function loadTasksFailure(error) {
+  return { type: types.TASKS_LOAD_FAILURE, error };
 }
 
 export function loadTasks() {
   return dispatch => {
     getTasks()
       .then(tasks => dispatch(loadTasksSuccess(tasks)))
-      .catch(err => console.log("Error fetching tasks: ", err));
+      .catch(err => dispatch(loadTasksFailure(err)));
   };
-}
-
-export function loadEmployees() {
-  return dispatch => {};
 }
