@@ -6,7 +6,7 @@ export default function taskReducer(state = initialState.tasks, action) {
     case types.TASKS_LOAD_SUCCESSFUL:
       return action.tasks;
     case types.TASK_CREATE_SUCCESSFUL:
-      return [...state, action.task];
+      return [...state, { ...action.task }];
     default:
       return state;
   }
