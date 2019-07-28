@@ -27,6 +27,17 @@
       "status": "in progress",
       "description": "We really need some milk.",
       "dueDate": "2019-07-25"
+    },
+    {
+      "title": "Very basic task",
+      "description": "Hello this is as basic as it gets",
+      "id": "dx0DLyo"
+    },
+    {
+      "title": "Another basic task",
+      "description": "Hello how are you?",
+      "status": "in-progress",
+      "id": "qgax62n"
     }
   ]
 }

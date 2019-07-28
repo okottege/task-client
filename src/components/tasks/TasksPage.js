@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Alert, Card } from "react-bootstrap";
+import { Alert, Card, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as taskActions from "../../redux/actions/taskActions";
@@ -21,11 +21,19 @@ class TasksPage extends Component {
     actions.loadTasks();
   }
 
+  redirectToCreateTaskPage = () => this.props.history.push("/tasks/new");
+
   render() {
     return (
       <Card>
         <Card.Body>
           <h1>Tasks</h1>
+          <Card.Title>
+            To create a new task{" "}
+            <Button variant="primary" onClick={this.redirectToCreateTaskPage}>
+              Create new Task
+            </Button>
+          </Card.Title>
           {this.props.error ? <TaskListError /> : <TaskList tasks={this.props.tasks} />}
         </Card.Body>
       </Card>

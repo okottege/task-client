@@ -13,7 +13,7 @@ export function getTasks() {
 export function createNewTask(task) {
   return axios
     .post(taskUrl, task)
-    .then(response => response.data)
+    .then(response => response.data.id)
     .catch(err => {
       throw new Error(`There was a problem creating a new task, error is: ${err.message}`);
     });

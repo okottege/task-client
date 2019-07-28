@@ -11,12 +11,18 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
     <Form>
       <Form.Group controlId="txtTitle">
         <Form.Label>Title</Form.Label>
-        <Form.Control value={task.title} onChange={onChange} isValid={!hasError("txtTitle")} />
+        <Form.Control
+          name="title"
+          value={task.title}
+          onChange={onChange}
+          isValid={!hasError("txtTitle")}
+        />
       </Form.Group>
       <Form.Group controlId="txtDescription">
         <Form.Label>Description</Form.Label>
         <Form.Control
           as="textarea"
+          name="description"
           value={task.description}
           onChange={onChange}
           isValid={!hasError("txtDescription")}
@@ -26,6 +32,7 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
         <Form.Label>Status</Form.Label>
         <Form.Control
           as="select"
+          name="status"
           value={task.status}
           onChange={onChange}
           defaultValue="created"

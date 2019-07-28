@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Alert } from "react-bootstrap";
+import { Alert, Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import * as taskActions from "../../redux/actions/taskActions";
 import TaskForm from "./TaskForm";
@@ -22,6 +22,8 @@ const CreateTaskPage = ({ saveNewTask, history }) => {
   };
   const handleChange = e => {
     const { name, value } = e.target;
+    console.log("event object: ", e.target);
+    console.log(`name is: ${name}, value is: ${value}`);
     setTask(prevTask => ({
       ...prevTask,
       [name]: value
@@ -30,9 +32,14 @@ const CreateTaskPage = ({ saveNewTask, history }) => {
 
   return (
     <>
-      <h1>Create new task</h1>
       {error && <Alert type="danger">{error}</Alert>}
-      <TaskForm task={task} onSave={handleSave} onChange={handleChange} />
+      <Card>
+        <Card.Body>
+          <h1>Create new task</h1>
+          <Card.Title>Please enter the task details below</Card.Title>
+          <TaskForm task={task} onSave={handleSave} onChange={handleChange} />
+        </Card.Body>
+      </Card>
     </>
   );
 };
@@ -45,8 +52,7 @@ CreateTaskPage.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  task: state.task,
-  error: null
+  error: state.error
 });
 const mapDispatchToProps = {
   saveNewTask: taskActions.saveNewTask

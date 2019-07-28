@@ -2,5 +2,6 @@ export default {
   tasks: [],
   employees: [],
   error: "",
-  task: {}
+  task: {},
+  newTaskId: 0
 };
