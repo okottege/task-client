@@ -15,7 +15,7 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           name="title"
           value={task.title}
           onChange={onChange}
-          isValid={!hasError("txtTitle")}
+          isValid={!hasError("title")}
         />
       </Form.Group>
       <Form.Group controlId="txtDescription">
@@ -25,7 +25,7 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           name="description"
           value={task.description}
           onChange={onChange}
-          isValid={!hasError("txtDescription")}
+          isValid={!hasError("description")}
         />
       </Form.Group>
       <Form.Group controlId="ddlStatus">
@@ -36,7 +36,7 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           value={task.status}
           onChange={onChange}
           defaultValue="created"
-          isValid={!hasError("ddlStatus")}
+          isValid={!hasError("status")}
         >
           <option value="created">Created</option>
           <option value="in-progress">In Progress</option>
