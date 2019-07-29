@@ -10,6 +10,15 @@ export function getTasks() {
     });
 }
 
+export function getTask(taskId) {
+  return axios
+    .get(`${taskUrl}/${taskId}`)
+    .then(response => response.data)
+    .catch(err => {
+      throw new Error(`There was an problem getting task details, error: ${err.message}`);
+    });
+}
+
 export function createNewTask(task) {
   return axios
     .post(taskUrl, task)
