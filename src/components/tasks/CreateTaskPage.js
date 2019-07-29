@@ -8,7 +8,7 @@ import TaskForm from "./TaskForm";
 const { func, shape } = PropTypes;
 
 const CreateTaskPage = ({ saveNewTask, history }) => {
-  const defaultNewTask = { title: "", description: "" };
+  const defaultNewTask = { status: "created" };
   const [task, setTask] = useState({ ...defaultNewTask });
   const [error, setError] = useState("");
 
@@ -22,8 +22,6 @@ const CreateTaskPage = ({ saveNewTask, history }) => {
   };
   const handleChange = e => {
     const { name, value } = e.target;
-    console.log("event object: ", e.target);
-    console.log(`name is: ${name}, value is: ${value}`);
     setTask(prevTask => ({
       ...prevTask,
       [name]: value
@@ -36,7 +34,7 @@ const CreateTaskPage = ({ saveNewTask, history }) => {
       <Card>
         <Card.Body>
           <h1>Create new task</h1>
-          <Card.Title>Please enter the task details below</Card.Title>
+          <Card.Text>Please enter the task details below</Card.Text>
           <TaskForm task={task} onSave={handleSave} onChange={handleChange} />
         </Card.Body>
       </Card>

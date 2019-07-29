@@ -22,7 +22,11 @@ const TaskList = ({ tasks }) => (
                 <td>{task.title}</td>
                 <td>{task.dueDate}</td>
                 <td>
-                  <Badge variant="primary">{task.status}</Badge>
+                  <h5>
+                    <Badge pill variant="primary">
+                      {task.status}
+                    </Badge>
+                  </h5>
                 </td>
               </tr>
             ))}

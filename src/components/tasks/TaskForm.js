@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
+import DatePicker from "react-datepicker/es";
 
 const { shape, string, arrayOf } = PropTypes;
 
@@ -28,6 +29,15 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           isValid={!hasError("description")}
         />
       </Form.Group>
+      <Form.Group controlId="dtpDueDate">
+        <Form.Label>Due</Form.Label>
+        <br />
+        <DatePicker
+          customInput={<Form.Control />}
+          selected={task.dueDate}
+          onChange={date => onChange({ target: { name: "dueDate", value: date } })}
+        />
+      </Form.Group>
       <Form.Group controlId="ddlStatus">
         <Form.Label>Status</Form.Label>
         <Form.Control
@@ -35,7 +45,6 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           name="status"
           value={task.status}
           onChange={onChange}
-          defaultValue="created"
           isValid={!hasError("status")}
         >
           <option value="created">Created</option>

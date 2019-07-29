@@ -28,12 +28,12 @@ class TasksPage extends Component {
       <Card>
         <Card.Body>
           <h1>Tasks</h1>
-          <Card.Title>
-            To create a new task{" "}
+          <Card.Text>
+            To create a new task please click on{" "}
             <Button variant="primary" onClick={this.redirectToCreateTaskPage}>
               Create new Task
             </Button>
-          </Card.Title>
+          </Card.Text>
           {this.props.error ? <TaskListError /> : <TaskList tasks={this.props.tasks} />}
         </Card.Body>
       </Card>
