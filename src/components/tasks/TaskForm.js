@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker/es";
 
-const { shape, string, arrayOf } = PropTypes;
+const { shape, string, arrayOf, func, bool } = PropTypes;
 
-export default function TaskForm({ task, onChange, onSave, errors }) {
-  const hasError = fld => errors.filter(e => e.field === fld).length > 0;
+export default function TaskForm({ task, onChange, onSave, errors, validated }) {
+  const haveNoErrors = fld =>
+    !validated ? null : errors.filter(e => e.field === fld).length === 0;
 
   return (
     <Form>
@@ -16,7 +17,7 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           name="title"
           value={task.title}
           onChange={onChange}
-          isValid={!hasError("title")}
+          isValid={haveNoErrors("title")}
         />
       </Form.Group>
       <Form.Group controlId="txtDescription">
@@ -26,14 +27,14 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           name="description"
           value={task.description}
           onChange={onChange}
-          isValid={!hasError("description")}
+          isValid={haveNoErrors("description")}
         />
       </Form.Group>
       <Form.Group controlId="dtpDueDate">
         <Form.Label>Due</Form.Label>
         <br />
         <DatePicker
-          customInput={<Form.Control />}
+          customInput={<Form.Control isValid={haveNoErrors("dueDate")} />}
           selected={task.dueDate}
           onChange={date => onChange({ target: { name: "dueDate", value: date } })}
         />
@@ -45,7 +46,7 @@ export default function TaskForm({ task, onChange, onSave, errors }) {
           name="status"
           value={task.status}
           onChange={onChange}
-          isValid={!hasError("status")}
+          isValid={haveNoErrors("status")}
         >
           <option value="created">Created</option>
           <option value="in-progress">In Progress</option>
@@ -71,7 +72,10 @@ TaskForm.propTypes = {
       field: string,
       message: string
     })
-  )
+  ),
+  onSave: func.isRequired,
+  onChange: func.isRequired,
+  validated: bool.isRequired
 };
 
 TaskForm.defaultProps = {

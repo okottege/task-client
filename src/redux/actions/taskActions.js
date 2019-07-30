@@ -1,8 +1,8 @@
 import * as types from "./actionTypes";
 import { getTasks, createNewTask, getTask } from "../../api/taskService";
 
-export function createTaskSuccess(taskId) {
-  return { type: types.TASK_CREATE_SUCCESSFUL, taskId };
+export function createTaskSuccess(task) {
+  return { type: types.TASK_CREATE_SUCCESSFUL, task };
 }
 
 export function loadTasksSuccess(tasks) {
@@ -44,7 +44,7 @@ export function loadTaskDetails(taskId) {
 export function saveNewTask(task) {
   return dispatch => {
     return createNewTask(task)
-      .then(taskId => dispatch(createTaskSuccess(taskId)))
+      .then(taskId => dispatch(createTaskSuccess({ ...task, id: taskId })))
       .catch(err => dispatch(createTaskFailure(err)));
   };
 }

@@ -51,6 +51,20 @@
       "description": "Phase 1 begins tomorrow",
       "dueDate": "2019-08-02T12:00:00.000Z",
       "id": "w2NyEoa"
+    },
+    {
+      "status": "created",
+      "title": "Create solution options",
+      "description": "We need to create some options for discussion.",
+      "dueDate": "2019-08-02T12:00:00.000Z",
+      "id": "1rImj0m"
+    },
+    {
+      "status": "created",
+      "title": "Another very important task",
+      "description": "This is high priority",
+      "dueDate": "2019-07-31T12:00:00.000Z",
+      "id": "A67A9wd"
     }
   ]
 }
