@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker/es";
 
-const { shape, string, arrayOf, func, bool } = PropTypes;
+const { shape, string, arrayOf, func, bool, instanceOf } = PropTypes;
 
 export default function TaskForm({ task, onChange, onSave, errors, validated }) {
   const haveNoErrors = fld =>
@@ -15,6 +15,7 @@ export default function TaskForm({ task, onChange, onSave, errors, validated }) 
         <Form.Label>Title</Form.Label>
         <Form.Control
           name="title"
+          type="text"
           value={task.title}
           onChange={onChange}
           isValid={haveNoErrors("title")}
@@ -64,7 +65,7 @@ TaskForm.propTypes = {
   task: shape({
     title: string,
     description: string,
-    dueDate: string,
+    dueDate: instanceOf(Date),
     status: string
   }).isRequired,
   errors: arrayOf(

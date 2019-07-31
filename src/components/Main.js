@@ -11,6 +11,7 @@ const Main = () => (
       <Route exact path="/" component={TasksPage} />
       <Route exact path="/tasks" component={TasksPage} />
       <Route exact path="/tasks/new" component={CreateTaskPage} />
+      <Route exact path="/tasks/:taskId" component={CreateTaskPage} />
       <Route exact path="/about" component={About} />
       <Route component={NotFound} />
     </Switch>
