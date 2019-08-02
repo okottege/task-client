@@ -13,7 +13,7 @@ export function getTasks() {
 export function getTask(taskId) {
   return axios
     .get(`${taskUrl}/${taskId}`)
-    .then(response => response.data)
+    .then(({ data }) => ({ ...data, dueDate: data.dueDate ? Date.parse(data.dueDate) : null }))
     .catch(err => {
       throw new Error(`There was an problem getting task details, error: ${err.message}`);
     });
