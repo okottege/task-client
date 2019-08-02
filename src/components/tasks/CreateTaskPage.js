@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import PropTypes from "prop-types";
 import { Alert, Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as taskActions from "../../redux/actions/taskActions";
 import TaskForm from "./TaskForm";
+import initialState from "../../redux/reducers/initialState";
 
 const { func, shape, string } = PropTypes;
 
-const CreateTaskPage = ({ history, taskId, ...props }) => {
-  console.log("before props.task: ", props.task);
-  const [taskInState, setTask] = useState({
-    title: props.task.title,
-    description: props.task.description
-  });
+const CreateTaskPage = ({ history, taskId, task, ...props }) => {
+  console.log("before task passed in prop: ", task);
+  const [taskInState, setTask] = useState({ ...initialState.task });
+  console.log("after setting task: ", taskInState);
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState("");
   const { loadTaskDetails, saveNewTask } = props.actions;
 
-  console.log("Task is: ", taskInState);
-
   useEffect(() => {
-    if (taskId) {
+    console.log("task.id is ", task.id);
+    if (!task.id) {
       loadTaskDetails(taskId).catch(err => setError(err));
+    } else {
+      console.log("setting task...");
+      setTask({ ...task });
     }
-  }, []);
+  }, [task.id]);
 
   const handleSave = e => {
     e.preventDefault();
