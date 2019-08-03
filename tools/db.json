@@ -78,6 +78,13 @@
       "title": "Basic task",
       "description": "hello how are you?",
       "id": "gyk355J"
+    },
+    {
+      "status": "in-progress",
+      "title": "Pay the vodafone bill",
+      "description": "Contact the vodafone staff to get a break-down of the bill",
+      "dueDate": "2019-08-19T12:00:00.000Z",
+      "id": "5fVTCIP"
     }
   ]
 }

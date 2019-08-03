@@ -16,7 +16,7 @@ const ManageTaskPage = ({ history, taskId, task, ...props }) => {
   const { loadTaskDetails, saveNewTask } = props.actions;
 
   useEffect(() => {
-    if (taskId !== task.id) {
+    if (taskId && taskId !== task.id) {
       loadTaskDetails(taskId).catch(err => setError(err));
     } else {
       setTask({ ...task });
