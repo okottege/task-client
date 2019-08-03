@@ -9,11 +9,11 @@ import initialState from "../../redux/reducers/initialState";
 
 const { func, shape, string } = PropTypes;
 
-const ManageTaskPage = ({ history, taskId, task, ...props }) => {
+const ManageTaskPage = ({ history, taskId, task, actions }) => {
   const [taskInState, setTask] = useState({ ...initialState.task });
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState("");
-  const { loadTaskDetails, saveNewTask } = props.actions;
+  const { loadTaskDetails, saveTask } = actions;
 
   useEffect(() => {
     if (taskId && taskId !== task.id) {
@@ -26,7 +26,7 @@ const ManageTaskPage = ({ history, taskId, task, ...props }) => {
   const handleSave = e => {
     e.preventDefault();
     setValidated(true);
-    saveNewTask(taskInState)
+    saveTask(taskInState)
       .then(() => {
         history.push("/tasks");
       })
@@ -64,7 +64,11 @@ ManageTaskPage.propTypes = {
     push: func.isRequired
   }).isRequired,
   taskId: string,
-  task: PropTypes.object.isRequired
+  task: shape({ id: string }).isRequired,
+  actions: shape({
+    saveTask: func.isRequired,
+    loadTaskDetails: func.isRequired
+  }).isRequired
 };
 
 ManageTaskPage.defaultProps = {
@@ -81,7 +85,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = dispatch => ({
   actions: {
-    saveNewTask: bindActionCreators(taskActions.saveNewTask, dispatch),
+    saveTask: bindActionCreators(taskActions.saveTask, dispatch),
     loadTaskDetails: bindActionCreators(taskActions.loadTaskDetails, dispatch)
   }
 });

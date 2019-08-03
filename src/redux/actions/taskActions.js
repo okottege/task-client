@@ -49,18 +49,18 @@ export function loadTaskDetails(taskId) {
   };
 }
 
-export function saveNewTask(task) {
+export function saveTask(task) {
+  if (task.id) {
+    return dispatch => {
+      return updateTask(task)
+        .then(t => dispatch(updateTaskSuccess(t)))
+        .catch(err => dispatch(updateTaskFailure(err)));
+    };
+  }
+
   return dispatch => {
     return createNewTask(task)
       .then(taskId => dispatch(createTaskSuccess({ ...task, id: taskId })))
       .catch(err => dispatch(createTaskFailure(err)));
-  };
-}
-
-export function updateTaskDetails(task) {
-  return dispatch => {
-    return updateTask(task)
-      .then(t => dispatch(updateTaskSuccess(t)))
-      .catch(err => dispatch(updateTaskFailure(err)));
   };
 }

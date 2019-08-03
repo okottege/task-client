@@ -30,7 +30,7 @@ export function createNewTask(task) {
 
 export function updateTask(task) {
   return axios
-    .put(`${taskUrl}/${task.id}`)
+    .put(`${taskUrl}/${task.id}`, task)
     .then(({ data }) => data)
     .catch(err => {
       throw new Error(`There was a problem updating task, error is: ${err}`);

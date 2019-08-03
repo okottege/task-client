@@ -1,37 +1,11 @@
 {
   "tasks": [
     {
-      "id": "task-123-abc",
-      "title": "Get bread",
-      "description": "Go and get the best bread",
-      "status": "created",
-      "dueDate": "2019-01-01"
-    },
-    {
-      "id": "task-456-abc",
-      "title": "Get the WOF",
-      "status": "created",
-      "description": "have to get the vehicle Warrant of fitness",
-      "dueDate": "2019-07-20"
-    },
-    {
-      "id": "task-789-abc",
-      "title": "Ring client ABC Holidays Ltd",
-      "status": "created",
-      "description": "We need to ring ABC Holidays to answer few of their queries.",
-      "dueDate": "2019-07-25"
-    },
-    {
-      "id": "task-112-xxy",
-      "title": "Go to the dairy to get some milk",
-      "status": "in progress",
-      "description": "We really need some milk.",
-      "dueDate": "2019-07-25"
-    },
-    {
-      "title": "Very basic task",
+      "title": "Very basic task.  edited",
       "description": "Hello this is as basic as it gets",
-      "id": "dx0DLyo"
+      "id": "dx0DLyo",
+      "dueDate": null,
+      "status": "created"
     },
     {
       "title": "Another basic task",
@@ -49,7 +23,7 @@
       "status": "created",
       "title": "Provide estimates",
       "description": "Phase 1 begins tomorrow",
-      "dueDate": "2019-08-02T12:00:00.000Z",
+      "dueDate": null,
       "id": "w2NyEoa"
     },
     {
@@ -85,6 +59,13 @@
       "description": "Contact the vodafone staff to get a break-down of the bill",
       "dueDate": "2019-08-19T12:00:00.000Z",
       "id": "5fVTCIP"
+    },
+    {
+      "status": "created",
+      "title": "Finish Front-end development",
+      "description": "We have to finish the react app.",
+      "dueDate": "2019-08-14T12:00:00.000Z",
+      "id": "fKBul1x"
     }
   ]
 }

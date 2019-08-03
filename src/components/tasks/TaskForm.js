@@ -8,6 +8,7 @@ const { shape, string, arrayOf, func, bool, instanceOf } = PropTypes;
 export default function TaskForm({ task, onChange, onSave, errors, validated }) {
   const haveNoErrors = fld =>
     !validated ? null : errors.filter(e => e.field === fld).length === 0;
+  console.log("task status is: ", task.status);
 
   return (
     <Form>

@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import tasks from "./taskReducer";
 import apiCallErrors from "./apiCallErrorReducer";
-import createTaskReducer from "./createTaskReducer";
+import manageTaskReducer from "./manageTaskReducer";
 
-const rootReducer = combineReducers({ tasks, error: apiCallErrors, task: createTaskReducer });
+const rootReducer = combineReducers({ tasks, error: apiCallErrors, task: manageTaskReducer });
 
 export default rootReducer;
