@@ -27,3 +27,12 @@ export function createNewTask(task) {
       throw new Error(`There was a problem creating a new task, error is: ${err.message}`);
     });
 }
+
+export function updateTask(task) {
+  return axios
+    .put(`${taskUrl}/${task.id}`)
+    .then(({ data }) => data)
+    .catch(err => {
+      throw new Error(`There was a problem updating task, error is: ${err}`);
+    });
+}

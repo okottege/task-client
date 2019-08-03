@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import { getTasks, createNewTask, getTask } from "../../api/taskService";
+import { getTasks, createNewTask, getTask, updateTask } from "../../api/taskService";
 
 export function createTaskSuccess(task) {
   return { type: types.TASK_CREATE_SUCCESSFUL, task };
@@ -21,8 +21,16 @@ export function createTaskFailure(error) {
   return { type: types.TASK_CREATE_FAILURE, error };
 }
 
+export function updateTaskFailure(error) {
+  return { type: types.TASK_UPDATE_FAILURE, error };
+}
+
 export function serviceErrorResponse(error) {
   return { type: types.SERVICE_ERROR_RESPONSE, error };
+}
+
+export function updateTaskSuccess(task) {
+  return { type: types.TASK_UPDATE_SUCCESSFUL, task };
 }
 
 export function loadTasks() {
@@ -46,5 +54,13 @@ export function saveNewTask(task) {
     return createNewTask(task)
       .then(taskId => dispatch(createTaskSuccess({ ...task, id: taskId })))
       .catch(err => dispatch(createTaskFailure(err)));
+  };
+}
+
+export function updateTaskDetails(task) {
+  return dispatch => {
+    return updateTask(task)
+      .then(t => dispatch(updateTaskSuccess(t)))
+      .catch(err => dispatch(updateTaskFailure(err)));
   };
 }
