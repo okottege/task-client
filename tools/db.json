@@ -4,20 +4,22 @@
       "title": "Very basic task.  edited",
       "description": "Hello this is as basic as it gets",
       "id": "dx0DLyo",
-      "dueDate": null,
-      "status": "created"
+      "status": "in-progress",
+      "dueDate": "2019-08-14T12:00:00.000Z"
     },
     {
       "title": "Another basic task",
       "description": "Hello how are you?",
       "status": "in-progress",
-      "id": "qgax62n"
+      "id": "qgax62n",
+      "dueDate": null
     },
     {
       "status": "created",
-      "title": "Ring client ABC",
+      "title": "Ring client ABC..",
       "description": "WE need to ring mr AbC",
-      "id": "X3WrRoU"
+      "id": "X3WrRoU",
+      "dueDate": "2019-08-05T12:00:00.000Z"
     },
     {
       "status": "created",
@@ -66,6 +68,13 @@
       "description": "We have to finish the react app.",
       "dueDate": "2019-08-14T12:00:00.000Z",
       "id": "fKBul1x"
+    },
+    {
+      "status": "in-progress",
+      "title": "Task to test due date",
+      "description": "We are testing if we can set the due date",
+      "dueDate": "2019-08-26T12:00:00.000Z",
+      "id": "Z-cT9A6"
     }
   ]
 }

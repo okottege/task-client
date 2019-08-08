@@ -1,10 +1,17 @@
 import axios from "axios";
 import { taskUrl } from "./apiUtils";
 
+const parseDate = dt => (dt ? new Date(dt).toISOString() : undefined);
+
+const toTaskListItem = task => ({
+  ...task,
+  dueDate: parseDate(task.dueDate)
+});
+
 export function getTasks() {
   return axios
     .get(taskUrl)
-    .then(response => response.data)
+    .then(({ data }) => data.map(toTaskListItem))
     .catch(err => {
       throw new Error(`There was a problem getting tasks, error is: ${err.message})`);
     });
@@ -13,7 +20,7 @@ export function getTasks() {
 export function getTask(taskId) {
   return axios
     .get(`${taskUrl}/${taskId}`)
-    .then(({ data }) => ({ ...data, dueDate: data.dueDate ? Date.parse(data.dueDate) : null }))
+    .then(({ data }) => ({ ...data, dueDate: parseDate(data.dueDate) }))
     .catch(err => {
       throw new Error(`There was an problem getting task details, error: ${err.message}`);
     });

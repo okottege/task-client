@@ -8,7 +8,6 @@ const { shape, string, arrayOf, func, bool, instanceOf } = PropTypes;
 export default function TaskForm({ task, onChange, onSave, errors, validated }) {
   const haveNoErrors = fld =>
     !validated ? null : errors.filter(e => e.field === fld).length === 0;
-  console.log("task status is: ", task.status);
 
   return (
     <Form>
@@ -37,7 +36,7 @@ export default function TaskForm({ task, onChange, onSave, errors, validated }) 
         <br />
         <DatePicker
           customInput={<Form.Control isValid={haveNoErrors("dueDate")} />}
-          selected={task.dueDate}
+          selected={Date.parse(task.dueDate)}
           onChange={date => onChange({ target: { name: "dueDate", value: date } })}
         />
       </Form.Group>
