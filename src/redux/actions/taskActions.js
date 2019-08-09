@@ -33,6 +33,10 @@ export function updateTaskSuccess(task) {
   return { type: types.TASK_UPDATE_SUCCESSFUL, task };
 }
 
+export function taskDetailsValidationFailure(errors) {
+  return { type: types.TASK_DETAILS_VALIDATION_FAILURE, errors };
+}
+
 export function loadTasks() {
   return dispatch => {
     return getTasks()

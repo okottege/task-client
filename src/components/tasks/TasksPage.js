@@ -34,7 +34,7 @@ class TasksPage extends Component {
               Create new Task
             </Button>
           </Card.Text>
-          {this.props.error ? <TaskListError /> : <TaskList tasks={this.props.tasks} />}
+          {this.props.errors.length > 0 ? <TaskListError /> : <TaskList tasks={this.props.tasks} />}
         </Card.Body>
       </Card>
     );
@@ -43,13 +43,13 @@ class TasksPage extends Component {
 
 TasksPage.propTypes = {
   tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
-  error: PropTypes.string,
+  errors: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.shape({
     loadTasks: PropTypes.func.isRequired
   }).isRequired
 };
 TasksPage.defaultProps = {
-  error: undefined
+  errors: []
 };
 
 const mapStateToProps = state => {
