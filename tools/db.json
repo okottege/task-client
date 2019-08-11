@@ -1,18 +1,18 @@
 {
   "tasks": [
     {
-      "title": "Very basic task.  edited",
+      "title": "Very basic task.  edited, again, not again!",
       "description": "Hello this is as basic as it gets",
       "id": "dx0DLyo",
       "status": "in-progress",
-      "dueDate": "2019-08-14T12:00:00.000Z"
+      "dueDate": "2019-08-14T12:00:00.000Z",
+      "redirectToTaskList": false
     },
     {
       "title": "Another basic task",
       "description": "Hello how are you?",
       "status": "in-progress",
-      "id": "qgax62n",
-      "dueDate": null
+      "id": "qgax62n"
     },
     {
       "status": "created",
@@ -56,7 +56,7 @@
       "id": "gyk355J"
     },
     {
-      "status": "in-progress",
+      "status": "complete",
       "title": "Pay the vodafone bill",
       "description": "Contact the vodafone staff to get a break-down of the bill",
       "dueDate": "2019-08-19T12:00:00.000Z",
@@ -75,6 +75,19 @@
       "description": "We are testing if we can set the due date",
       "dueDate": "2019-08-26T12:00:00.000Z",
       "id": "Z-cT9A6"
+    },
+    {
+      "status": "created",
+      "id": "Xd0Hrkg",
+      "title": "Empty task",
+      "description": "Sample description."
+    },
+    {
+      "status": "created",
+      "title": "Task for little baby",
+      "description": "Feed the baby",
+      "dueDate": "2019-08-27T12:00:00.000Z",
+      "id": "X36Uo8I"
     }
   ]
 }

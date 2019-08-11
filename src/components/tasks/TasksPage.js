@@ -54,8 +54,8 @@ TasksPage.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    tasks: state.tasks,
-    error: state.error
+    tasks: state.taskList.tasks,
+    errors: state.taskList.errors
   };
 };
 const mapDispatchToProps = dispatch => ({

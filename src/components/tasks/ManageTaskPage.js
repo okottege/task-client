@@ -7,17 +7,17 @@ import * as taskActions from "../../redux/actions/taskActions";
 import TaskForm from "./TaskForm";
 import initialState from "../../redux/reducers/initialState";
 
-const { func, shape, string } = PropTypes;
+const { func, shape, string, bool } = PropTypes;
 
-const ManageTaskPage = ({ history, taskId, task, actions }) => {
+const ManageTaskPage = ({ taskId, task, errors, actions, redirect, history }) => {
   const [taskInState, setTask] = useState({ ...initialState.task });
   const [validated, setValidated] = useState(false);
-  const [error, setError] = useState("");
-  const { loadTaskDetails, saveTask } = actions;
+  const [errorsInState, setErrors] = useState([...errors]);
+  const { beginSaveTask, loadTaskDetails } = actions;
 
   useEffect(() => {
     if (taskId && taskId !== task.id) {
-      loadTaskDetails(taskId).catch(err => setError(err));
+      loadTaskDetails(taskId).catch(err => setErrors({ msg: err }));
     } else {
       setTask({ ...task });
     }
@@ -26,11 +26,7 @@ const ManageTaskPage = ({ history, taskId, task, actions }) => {
   const handleSave = e => {
     e.preventDefault();
     setValidated(true);
-    saveTask(taskInState)
-      .then(() => {
-        history.push("/tasks");
-      })
-      .catch(err => setError(err));
+    beginSaveTask(taskInState);
   };
   const handleChange = e => {
     const { name, value } = e.target;
@@ -39,13 +35,18 @@ const ManageTaskPage = ({ history, taskId, task, actions }) => {
       [name]: value
     }));
   };
+  const shouldRedirect = () => redirect && taskId === task.id;
 
+  const HeadingText = () => (taskInState.id ? "Task Details" : "Create new task");
+  if (shouldRedirect()) history.push("/tasks");
   return (
     <>
-      {error && <Alert type="danger">{error}</Alert>}
+      {errorsInState.length > 0 && <Alert type="danger">{errorsInState[0]}</Alert>}
       <Card>
         <Card.Body>
-          <h1>Create new task</h1>
+          <h1>
+            <HeadingText />
+          </h1>
           <Card.Text>Please enter the task details below</Card.Text>
           <TaskForm
             task={taskInState}
@@ -66,9 +67,10 @@ ManageTaskPage.propTypes = {
   taskId: string,
   task: shape({ id: string }).isRequired,
   actions: shape({
-    saveTask: func.isRequired,
+    beginSaveTask: func.isRequired,
     loadTaskDetails: func.isRequired
-  }).isRequired
+  }).isRequired,
+  redirect: bool.isRequired
 };
 
 ManageTaskPage.defaultProps = {
@@ -77,15 +79,17 @@ ManageTaskPage.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => {
   const { taskId } = ownProps.match.params;
+  const { taskDetails } = state;
   return {
-    error: state.error,
+    errors: taskDetails.errors || [],
     taskId,
-    task: taskId && state.task ? state.task : initialState.task
+    task: taskId && taskDetails.task ? taskDetails.task : initialState.task,
+    redirect: taskDetails.redirectToList === true
   };
 };
 const mapDispatchToProps = dispatch => ({
   actions: {
-    saveTask: bindActionCreators(taskActions.saveTask, dispatch),
+    beginSaveTask: bindActionCreators(taskActions.beginSaveTask, dispatch),
     loadTaskDetails: bindActionCreators(taskActions.loadTaskDetails, dispatch)
   }
 });

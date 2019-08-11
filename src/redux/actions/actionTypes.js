@@ -10,3 +10,4 @@ export const EMPLOYEES_LOAD_SUCCESSFUL = "employees-load-success";
 export const EMPLOYEES_LOAD_FAILURE = "employees-load-failure";
 export const SERVICE_ERROR_RESPONSE = "service-error-response";
 export const TASK_DETAILS_VALIDATION_FAILURE = "task-details-validation-failure";
+export const COMPONENT_UNMOUNT = "component-unmount";

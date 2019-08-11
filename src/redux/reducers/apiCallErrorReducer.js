@@ -12,7 +12,7 @@ export default function apiCallErrorReducer(state = initialState.errors, action)
     case TASK_CREATE_FAILURE:
       return [{ msg: "There was a problem creating a task." }];
     case TASK_DETAILS_VALIDATION_FAILURE:
-      return action.errors;
+      return [...action.errors];
     default:
       return state;
   }

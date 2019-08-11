@@ -1,9 +1,11 @@
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
-export default function taskReducer(state = initialState.tasks, action) {
+const initialTaskState = { tasks: initialState.tasks, errors: initialState.errors };
+
+export default function taskReducer(state = initialTaskState, action) {
   if (action.type === types.TASKS_LOAD_SUCCESSFUL) {
-    return action.tasks;
+    return { tasks: [...action.tasks], errors: [] };
   }
   return state;
 }

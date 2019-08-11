@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import { getTasks, createNewTask, getTask, updateTask } from "../../api/taskService";
+import { getTasks, getTask } from "../../api/taskService";
 
 export function createTaskSuccess(task) {
   return { type: types.TASK_CREATE_SUCCESSFUL, task };
@@ -37,6 +37,14 @@ export function taskDetailsValidationFailure(errors) {
   return { type: types.TASK_DETAILS_VALIDATION_FAILURE, errors };
 }
 
+export function beginSaveTask(task) {
+  return { type: types.TASK_DETAILS_SAVE, task };
+}
+
+export function componentUnmount() {
+  return { type: types.COMPONENT_UNMOUNT };
+}
+
 export function loadTasks() {
   return dispatch => {
     return getTasks()
@@ -50,21 +58,5 @@ export function loadTaskDetails(taskId) {
     return getTask(taskId)
       .then(task => dispatch(loadTaskDetailsSuccess(task)))
       .catch(err => dispatch(serviceErrorResponse(err)));
-  };
-}
-
-export function saveTask(task) {
-  if (task.id) {
-    return dispatch => {
-      return updateTask(task)
-        .then(t => dispatch(updateTaskSuccess(t)))
-        .catch(err => dispatch(updateTaskFailure(err)));
-    };
-  }
-
-  return dispatch => {
-    return createNewTask(task)
-      .then(taskId => dispatch(createTaskSuccess({ ...task, id: taskId })))
-      .catch(err => dispatch(createTaskFailure(err)));
   };
 }
